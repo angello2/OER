@@ -14,7 +14,7 @@ public class TriSATSolver {
 		Optional<BitVector> solution = null;
 		int algNum = Integer.parseInt(args[0]);
 		String file = args[1];
-		SATFormula formula = ucitajIzDatoteke("C:\\Users\\Filip\\workspace\\OERLab1\\01-3sat\\" + file);
+		SATFormula formula = ucitajIzDatoteke("01-3sat\\" + file);
 		
 		switch(algNum) {
 		case 1:
