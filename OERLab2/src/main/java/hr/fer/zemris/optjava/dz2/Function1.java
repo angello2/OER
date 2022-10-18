@@ -13,6 +13,7 @@ public class Function1 implements IFunction {
 		double x1 = values.getEntry(0);
 		double x2 = values.getEntry(1);
     
+		// funkcija je x1^2 + (x2 - 1)^2
 		double result = Math.pow(x1, 2) + Math.pow((x2 - 1), 2);
 		return result;
     }
