@@ -70,7 +70,7 @@ public class Sustav {
         
         RealVector start_x = MatrixUtils.createRealVector(new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0});
         
-        RealVector min = NumOptAlgorithms.gradientDescent(system, maxIter, start_x);
+        RealVector min = NumOptAlgorithms.gradientDescent(system, maxIter, start_x, true);
         System.out.println("\nRješenje sustava je [" + min.getEntry(0) + ", " + min.getEntry(1) + ", " + min.getEntry(2) + ", " + 
         		min.getEntry(3) + ", " + min.getEntry(4) + ", " + min.getEntry(5) + ", " + min.getEntry(6) + ", " + min.getEntry(7)
         		+ ", " + min.getEntry(8) + ", " + min.getEntry(9) + "]" + "\nPogreška u trenutku zaustavljanja: " + system.getValue(min));

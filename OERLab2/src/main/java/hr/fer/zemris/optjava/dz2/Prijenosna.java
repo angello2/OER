@@ -86,14 +86,15 @@ public class Prijenosna {
 							x1,
 							Math.pow(x1, 3) * x2,
 							Math.exp(d * x3) * (1 + Math.cos(e * x4)),
-							c * Math.exp(d * x3) * (1 + Math.cos(e * x4)) * x3,
-							c * Math.exp(d * x3) * (-1 * Math.sin(e * x4)) * x4,
+							c * d * Math.exp(d * x3) * (1 + Math.cos(e * x4)),
+							c * Math.exp(d * x3) * (-1 * Math.sin(e * x4)),
 							x4 * Math.pow(x5,  2)
 					};					
 					data_J[i] = row_J;					
 				}
 				RealMatrix J = MatrixUtils.createRealMatrix(data_J);
-				return J.preMultiply(getG(coefs));
+				RealVector grad = J.preMultiply(getG(coefs));
+				return grad;
 			}        	
 			
 			public RealVector getG(RealVector coefs) {				
@@ -119,8 +120,8 @@ public class Prijenosna {
         
         RealVector start_coefs = MatrixUtils.createRealVector(new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0});
         
-        RealVector min = NumOptAlgorithms.gradientDescent(system, maxIter, start_coefs);
+        RealVector min = NumOptAlgorithms.gradientDescent(system, maxIter, start_coefs, false);
         System.out.println("\nKoeficijenti sustava su [" + min.getEntry(0) + ", " + min.getEntry(1) + ", " + min.getEntry(2) + ", " + 
-        		min.getEntry(3) + ", " + min.getEntry(4) + ", " + "]" + "\nPogreška u trenutku zaustavljanja: " + system.getValue(min));
+        		min.getEntry(3) + ", " + min.getEntry(4) + min.getEntry(5) + "]" + "\nPogreška u trenutku zaustavljanja: " + system.getValue(min));        
     }
 }

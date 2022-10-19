@@ -32,12 +32,12 @@ public class Jednostavno {
         switch (args[0]){
             case "1":
                 function = new Function1();
-                min = NumOptAlgorithms.gradientDescent(function, maxIter, startValues);
+                min = NumOptAlgorithms.gradientDescent(function, maxIter, startValues, true);
                 System.out.println("Minimum funkcije 1 je [" + min.getEntry(0) + ", " + min.getEntry(1) + "]");
                 break;
             case "2":
                 function = new Function2();
-                min = NumOptAlgorithms.gradientDescent(function, maxIter, startValues);
+                min = NumOptAlgorithms.gradientDescent(function, maxIter, startValues, true);
                 System.out.println("Minimum funkcije 2 je [" + min.getEntry(0) + ", " + min.getEntry(1) + "]");
                 break;
         }

@@ -6,7 +6,7 @@ public class NumOptAlgorithms {
 	
 	private static double eps = 1E-6;
 	
-	static RealVector gradientDescent(IFunction f, int maxIter, RealVector startValues){
+	static RealVector gradientDescent(IFunction f, int maxIter, RealVector startValues, boolean useBisection){
 		RealVector x = startValues.copy();
 		
 		for(int i = 0; i < maxIter; i++) {
@@ -14,7 +14,7 @@ public class NumOptAlgorithms {
 			RealVector dx = f.getGradient(x).mapMultiply(-1);
 			
 			// trazimo lambdu, radimo korak
-			double lambda = getLambda(f, x, dx);
+			double lambda = getLambda(f, x, dx, useBisection);
 			x = x.add(dx.mapMultiply(lambda));
 			
 			System.out.print((i + 1) + ". iteracija. Trenutno rješenje: [");
@@ -33,7 +33,10 @@ public class NumOptAlgorithms {
 		return x;
     }
 	
-	private static double getLambda(IFunction f, RealVector x, RealVector d) {
+	private static double getLambda(IFunction f, RealVector x, RealVector d, boolean useBisection) {
+		if (!useBisection) {
+			return 0.01;
+		}
 		double lambdaLower = 0;
 		double lambdaUpper = 1;		
 		double lambda;		
