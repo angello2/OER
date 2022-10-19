@@ -3,7 +3,6 @@ package hr.fer.zemris.optjava.dz2;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Random;
 
 import org.apache.commons.math3.linear.MatrixUtils;
 import org.apache.commons.math3.linear.RealMatrix;
@@ -11,8 +10,6 @@ import org.apache.commons.math3.linear.RealVector;
 
 public class Sustav {
 	public static void main(String[] args) throws IOException {
-        Random rand = new Random();
-        
         int maxIter = Integer.parseInt(args[0]);
         String filename = args[1];
         
