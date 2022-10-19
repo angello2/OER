@@ -10,20 +10,24 @@ public class NumOptAlgorithms {
 		RealVector x = startValues.copy();
 		
 		for(int i = 0; i < maxIter; i++) {
-			
-			// uvjet zaustavljanja: norma gradijenta je priblizno nula
-			if (f.getGradient(x).getNorm() < eps) {
-				System.out.println("Norma gradijenta je priblizno nula. Pronaden minimum");
-				break;
-			}
-			
-			System.out.println((i + 1) + ". iteracija. Trenutno rješenje: x1 = " + x.getEntry(0) + " x2 = " + x.getEntry(1)+ " vrijednost = " + f.getValue(x));
 			// mnozimo pomak s -1 pa ga kasnije dodajemo umjesto oduzimamo
 			RealVector dx = f.getGradient(x).mapMultiply(-1);
 			
 			// trazimo lambdu, radimo korak
 			double lambda = getLambda(f, x, dx);
 			x = x.add(dx.mapMultiply(lambda));
+			
+			System.out.print((i + 1) + ". iteracija. Trenutno rješenje: [");
+			for (int j = 0; j < startValues.getDimension() - 1; j++) {
+				System.out.print(x.getEntry(j) + " ");
+			}			
+			System.out.print(x.getEntry(startValues.getDimension() - 1));
+			System.out.print("]\n");
+			// uvjet zaustavljanja: norma gradijenta je priblizno nula
+			if (f.getGradient(x).getNorm() < eps) {
+				System.out.println("Norma gradijenta je priblizno nula. Pronaden minimum");
+				break;
+			}
 		}
 		
 		return x;
@@ -62,6 +66,6 @@ public class NumOptAlgorithms {
 			}
 		} while (Math.abs(dtheta) > eps);
 		
-		return lambda;		
+		return lambda;
 	}
 }
