@@ -75,16 +75,17 @@ public class RegresijaSustava {
 					value += Math.pow((rowValue - y.getEntry(i)), 2);
 				}
 				// prosjecna pogreska
-				return value / x.getRowDimension();
+				return value;
 			}
         };
         Random rand = new Random();
         double[] startingData = new double[system.getNumberOfVariables()];
         for (i = 0; i < system.getNumberOfVariables(); i++) {
-        	startingData[i] = rand.nextDouble(-3.0f, 3.0f);
+        	startingData[i] = rand.nextInt(-3, 3);
         }
         RealVector startingPoint = MatrixUtils.createRealVector(startingData);
-        RealVector minimum = SimulatedAnnealing.solve(system, startingPoint, true, true);
-        System.out.println("Pronađen minimum: " + minimum);
+        RealVector minimum = SimulatedAnnealing.solve(system, startingPoint, true, false);
+        System.out.println("Početna točka: " + startingPoint.toString() + " Pronađen minimum: " + minimum.toString());
+        System.out.println("Stvarni minimum za referencu: {7.0; -3.0; 2.0; 1.0; -3.0; 3.0} ili {7.0; -3.0; 2.0; 1.0; 3.0; 3.0}");
 	}
 }
