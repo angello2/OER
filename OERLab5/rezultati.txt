@@ -1,0 +1,20 @@
+globalni
+
+parametri:
+wmin = 0.5, wmax = 0.9, K = 0.729, c1 = 2.05, c2 = 2.05, popSize = 100, maxIter = 1000, vlimit = 0.2
+
+50-55% xmin, xmax = -10, 10
+45% xmin, xmax = -5, 5
+
+najbolji rezultat je za 1000 cestica
+83% popSize = 1000, maxIter = 1000
+
+
+postotak je broj rezultata kojima je greska ispod 10^-3 u 1000 vrtnji algoritma
+
+
+lokalni
+
+
+
+
