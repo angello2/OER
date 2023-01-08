@@ -130,10 +130,8 @@ public class PSO {
     	double gbest_f = 0.0;
     	double[] gbest = new double[dim];
     	
-    	int neighborhoodSize = (int) ((float) 0.2 * popSize);
+    	int neighborhoodSize = (int) ((float) 0.15 * popSize);
     	int ns = (neighborhoodSize - 1) / 2;
-    	
-    	System.out.println("ns = " + ns);
     	
     	double[] lbest_f = new double[popSize];
     	double[][] lbest = new double[popSize][dim];
@@ -172,20 +170,21 @@ public class PSO {
     		
     		// provjeri je li nadeno bolje lokalno rjesenje
     		for(int i = 0; i < popSize; i++) {
-    			lbest_f[i] = f[i];
+    			if (lbest_f[i] == 0.0) lbest_f[i] = f[i];
     			// susjedstvo ide od i - ns (ili 0) do i + ns (ili popSize - 1) 
     			int j = i - ns;
     			
     			if (j < 0) {
     				j = 0;
     			}
+    			
     			while(j <= i + ns && j < popSize) {
     				if(f[j] < lbest_f[i]) {
     					lbest_f[i] = f[j];
     					lbest[i] = x[j].clone();
     				}
     				j++;
-    			}
+    			};
     		}
 
     		if(verbose) {
