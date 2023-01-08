@@ -17,6 +17,6 @@ lokalni
 isti parametri
 
 18.5% za 100 cestica, 1000 iter ??
-za 1000 cestica radi bolje od globalnog
+za 1000 cestica radi bolje od globalnog - 99.7%!
 
 
